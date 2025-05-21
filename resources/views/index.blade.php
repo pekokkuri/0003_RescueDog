@@ -13,9 +13,12 @@
         <script
             src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key={{
                 config('services.google_maps.api_key')
-            }}&callback=initMap"
+            }}&callback=initMap" 
             async
             defer
         ></script>
+        <a href="{{ route('posts.create') }}">
+            <button>投稿する</button>
+        </a>
     </body>
 </html>
