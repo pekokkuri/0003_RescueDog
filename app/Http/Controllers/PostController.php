@@ -10,4 +10,9 @@ class PostController extends Controller
     {
         return view('index');
     }
+
+    public function create()
+    {
+        return view('posts/create');
+    }
 }
