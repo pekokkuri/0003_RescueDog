@@ -14,3 +14,8 @@ addressInput.addEventListener("change", () => {
         }
     });
 });
+
+function submitForm() {
+    const form = document.getElementById('post-form');
+    form.submit();
+}

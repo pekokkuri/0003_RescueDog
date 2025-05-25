@@ -7,7 +7,12 @@
     </head>
     <body>
         <h1>投稿ページ</h1>
-        <form method="POST" action="{{ route('posts.store') }}" >
+        <form
+            id="post-form"
+            method="POST"
+            action="{{ route('posts.store') }}"
+            onsubmit="return false;"
+        >
             @csrf
             <!-- <div>
                 <label> 画像(仮) </label>
@@ -28,7 +33,7 @@
                 </label>
             </div> -->
             <div>
-                <button>投稿</button>
+                <button type="button" onclick="submitForm()">投稿</button>
             </div>
         </form>
 
