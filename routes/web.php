@@ -14,5 +14,7 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', [PostController::class, 'index'])->name('index');
-Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+Route::get('/', [PostController::class, 'index'])->name('posts.index');
+// Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
+
+Route::resource('posts', PostController::class)->except(['index']);
