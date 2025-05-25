@@ -7,11 +7,11 @@
     </head>
     <body>
         <h1>投稿ページ</h1>
-        <form>
+        <form method="POST" action="{{ route('posts.store') }}" >
             @csrf
-            <div>
+            <!-- <div>
                 <label> 画像(仮) </label>
-            </div>
+            </div> -->
             <div>
                 <label>
                     場所
@@ -21,18 +21,18 @@
                 <input type="hidden" name="lat" id="lat" />
                 <input type="hidden" name="lng" id="lng" />
             </div>
-            <div>
+            <!-- <div>
                 <label>
                     特徴
                     <textarea></textarea>
                 </label>
-            </div>
+            </div> -->
             <div>
                 <button>投稿</button>
             </div>
         </form>
 
-        <a href="{{ route('index') }}">
+        <a href="{{ route('posts.index') }}">
             <button>戻る</button>
         </a>
 
