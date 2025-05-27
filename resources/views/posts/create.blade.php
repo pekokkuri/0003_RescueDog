@@ -3,16 +3,12 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="{{ url('style.css') }}" />
         <title>RescueDog Create</title>
     </head>
     <body>
         <h1>投稿ページ</h1>
-        <form
-            id="post-form"
-            method="POST"
-            action="{{ route('posts.store') }}"
-            onsubmit="return false;"
-        >
+        <form id="post-form" method="POST" action="{{ route('posts.store') }}">
             @csrf
             <!-- <div>
                 <label> 画像(仮) </label>
@@ -25,6 +21,8 @@
 
                 <input type="hidden" name="lat" id="lat" />
                 <input type="hidden" name="lng" id="lng" />
+
+                <div id="error-message"></div>
             </div>
             <!-- <div>
                 <label>
