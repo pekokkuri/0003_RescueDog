@@ -9,12 +9,13 @@ class PostController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $posts = Post::all();
+        return view('index')->with(['posts' => $posts]);
     }
 
     public function create()
     {
-        return view('posts/create');
+        return view('posts.create');
     }
 
     public function store(Request $request)

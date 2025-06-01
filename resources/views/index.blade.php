@@ -9,6 +9,11 @@
     <body>
         <h1>迷子犬マップ</h1>
         <div id="map"></div>
+
+        <script>
+            // コントローラで取得したデータ($posts)をJavascriptでも扱えるようにJSON形式で定義
+            const posts = @json($posts);
+        </script>
         <script src="{{ url('/js/map.js') }}"></script>
         <script
             src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key={{

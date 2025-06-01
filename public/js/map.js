@@ -8,5 +8,17 @@ function initMap() {
         center: center,
     };
 
-    mapObj = new google.maps.Map(map, opt);
+    const mapObj = new google.maps.Map(map, opt);
+    
+    posts.forEach((post) => {
+        console.log(post.lat, post.lng, post.address);
+        const latMaker = post.lat;
+        const lngMaker = post.lng;
+
+        const marker = new google.maps.Marker({
+            map: mapObj,
+            position: {lat: latMaker, lng:lngMaker},
+            title: post.address,
+        });
+    });
 }
