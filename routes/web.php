@@ -14,10 +14,28 @@ use App\Http\Controllers\PostController;
 |
 */
 
+
+/******************************************
+ * 投稿用ルート
+ * *************************************** */
+
 Route::get('/', [PostController::class, 'index'])->name('posts.index');
 // Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 
 Route::resource('posts', PostController::class)->except(['index']);
 
+
+
+/******************************************
+ * ログイン認証用ルート
+ * *************************************** */
+
 // Breezeの認証ルートを読み込む
 require __DIR__.'/auth.php';
+
+// マイページ編集用ルートを読み込む
+// require __DIR__.'/profile.php';
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
