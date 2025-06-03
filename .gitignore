@@ -2,7 +2,7 @@
 /public/build
 /public/hot
 /public/storage
-public/js/geo.test.js
+/public/js/geo.test.js
 /storage/*.key
 /vendor
 .env
@@ -17,3 +17,4 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+resources/views/welcome.blade.php

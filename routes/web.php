@@ -18,3 +18,6 @@ Route::get('/', [PostController::class, 'index'])->name('posts.index');
 // Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 
 Route::resource('posts', PostController::class)->except(['index']);
+
+// Breezeの認証ルートを読み込む
+require __DIR__.'/auth.php';
