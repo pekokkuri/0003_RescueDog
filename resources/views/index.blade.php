@@ -8,6 +8,16 @@
     </head>
     <body>
         <h1>迷子犬マップ</h1>
+        @if (Route::has('login'))
+        <div>
+            @auth
+                <a href="{{ url('/dashboard') }}">マイページ</a>
+            @else
+                <a href="{{ route('login') }}">ログイン</a>
+                <a href="{{ route('register') }}">新規登録</a>
+            @endauth
+            </div>
+        @endif
         <div id="map"></div>
 
         <script>
