@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -24,6 +25,10 @@ class PostController extends Controller
         $post->address = $request->address;
         $post->lat = $request->lat;
         $post->lng = $request->lng;
+
+        // ログインユーザーのIDをセット
+        $post->user_id = Auth::id();
+
         $post->save();
 
         return redirect()->route('posts.index');
