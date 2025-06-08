@@ -32,6 +32,13 @@
             async
             defer
         ></script>
+        
+        @if(session('error'))
+        <script>
+            alert("{{ session('error') }}");
+        </script>
+        @endif
+        
         <a href="{{ route('posts.create') }}">
             <button>投稿する</button>
         </a>
