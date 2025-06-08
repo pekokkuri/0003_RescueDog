@@ -7,17 +7,20 @@
         <title>Rescue Dog</title>
     </head>
     <body>
+        <header id="header">
         <h1>迷子犬マップ</h1>
-        @if (Route::has('login'))
-        <div>
-            @auth
-                <a href="{{ url('/dashboard') }}">マイページ</a>
-            @else
-                <a href="{{ route('login') }}">ログイン</a>
-                <a href="{{ route('register') }}">新規登録</a>
-            @endauth
-            </div>
-        @endif
+            @if (Route::has('login'))
+            <nav>
+                @auth
+                    <a href="{{ url('/dashboard') }}">マイページ</a>
+                @else
+                    <a href="{{ route('login') }}">ログイン</a>
+                    <a href="{{ route('register') }}">新規登録</a>
+                @endauth
+            </nav>
+            @endif
+        </header>
+
         <div id="map"></div>
 
         <script>
