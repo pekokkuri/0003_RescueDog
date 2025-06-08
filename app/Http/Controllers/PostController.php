@@ -16,6 +16,10 @@ class PostController extends Controller
 
     public function create()
     {
+        if (!auth()->check()) {
+            return redirect()->route('posts.index')->with('error', 'ログインが必要です。');
+        }
+
         return view('posts.create');
     }
 
