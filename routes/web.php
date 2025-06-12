@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,5 +38,17 @@ require __DIR__.'/auth.php';
 // require __DIR__.'/profile.php';
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $posts = Post::where('user_id', auth()->id())->get(); // 個人の投稿のみ表示
+    return view('dashboard', ['posts' => $posts]);
 })->middleware(['auth'])->name('dashboard');
+
+
+Route::get('/profile/edit', function () {
+    return view('profile.edit');
+})->name('profile.edit');
+
+Route::get('/logout-test', function () {
+    \Illuminate\Support\Facades\Auth::logout();
+    return redirect('/');
+});
+
