@@ -8,16 +8,25 @@
     </head>
     <body>
         <h1>迷子犬マップ</h1>
-        @if (Route::has('login'))
-        <div>
-            @auth
-                <a href="{{ url('/dashboard') }}">マイページ</a>
-            @else
-                <a href="{{ route('login') }}">ログイン</a>
-                <a href="{{ route('register') }}">新規登録</a>
-            @endauth
-            </div>
-        @endif
+            @if (Route::has('login'))
+            <nav>
+                @auth
+                    <a href="{{ url('/dashboard') }}">マイページ</a>
+                @else
+                    <a href="{{ route('login') }}">ログイン</a>
+                    <a href="{{ route('register') }}">新規登録</a>
+                @endauth
+
+                @auth
+                    <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                    <button type="submit">ログアウト</button>
+                    </form>
+                @endauth
+            </nav>
+            @endif
+        </header>
+        
         <div id="map"></div>
 
         <script>

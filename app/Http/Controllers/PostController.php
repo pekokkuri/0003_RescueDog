@@ -25,10 +25,7 @@ class PostController extends Controller
         $post->address = $request->address;
         $post->lat = $request->lat;
         $post->lng = $request->lng;
-
-        // ログインユーザーのIDをセット
-        $post->user_id = Auth::id();
-
+        $post->user_id = auth()->id();
         $post->save();
 
         return redirect()->route('posts.index');
