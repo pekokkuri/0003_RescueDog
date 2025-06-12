@@ -7,6 +7,7 @@
         <title>Rescue Dog</title>
     </head>
     <body>
+        <header id="header">
         <h1>迷子犬マップ</h1>
             @if (Route::has('login'))
             <nav>
@@ -26,7 +27,7 @@
             </nav>
             @endif
         </header>
-        
+
         <div id="map"></div>
 
         <script>
@@ -41,6 +42,13 @@
             async
             defer
         ></script>
+        
+        @if(session('error'))
+        <script>
+            alert("{{ session('error') }}");
+        </script>
+        @endif
+        
         <a href="{{ route('posts.create') }}">
             <button>投稿する</button>
         </a>
