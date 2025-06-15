@@ -23,7 +23,9 @@ use App\Models\Post;
 Route::get('/', [PostController::class, 'index'])->name('posts.index');
 // Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 
-Route::resource('posts', PostController::class)->except(['index']);
+Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit-post');
+
+Route::resource('posts', PostController::class)->except(['index','edit']);
 
 
 
