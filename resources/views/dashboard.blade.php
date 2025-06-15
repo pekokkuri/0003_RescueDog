@@ -21,13 +21,14 @@
 
     <ul>
         @forelse ($posts as $post)
-        <li>
-            <a href="{{ route('posts.show', $post) }}" class="text-skyblue-100 underline hover:text-blue-100">
-                {{ $post->address }}
-            </a>
-        </li>
+            <li>
+                <a href="{{ route('posts.show', $post) }}" class="text-skyblue-100 underline hover:text-blue-100">
+                    {{ $post->address }}
+                </a>
+            </li>
         @empty
-        <li>まだ投稿していません</li>
+            <li>まだ投稿していません</li>
         @endforelse
+
     </ul>
 </div>
