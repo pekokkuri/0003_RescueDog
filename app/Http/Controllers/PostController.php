@@ -14,6 +14,10 @@ class PostController extends Controller
         return view('index')->with(['posts' => $posts]);
     }
 
+    public function show(Post $post) {
+        return view('posts.show')->with(['post' => $post]);
+    }
+
     public function create()
     {
         if (!auth()->check()) {
