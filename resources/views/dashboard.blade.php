@@ -1,8 +1,7 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('マイページ') }}
-            
+            {{ __("マイページ") }}
         </h2>
     </x-slot>
 
@@ -18,13 +17,17 @@
 </x-app-layout>
 
 <div class="p-6 text-gray-900">
-    <h3>ようこそ、{{ Auth::user()->name }} さん</h3>
     <p>現在の投稿一覧：</p>
 
     <ul>
-        @foreach($posts as $post)
-        <li>{{ $post->address }}</li>
-        @endforeach
+        @forelse ($posts as $post)
+        <li>
+            <a href="{{ route('posts.show', $post) }}" class="text-skyblue-100 underline hover:text-blue-100">
+                {{ $post->address }}
+            </a>
+        </li>
+        @empty
+        <li>まだ投稿していません</li>
+        @endforelse
     </ul>
-
 </div>
