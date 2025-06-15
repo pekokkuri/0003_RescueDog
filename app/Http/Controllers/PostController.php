@@ -51,6 +51,13 @@ class PostController extends Controller
         $post->lng = $request->lng;
         $post->save();
 
-        return redirect()->route('dashboard', $post);
+        return redirect()->route('posts.show', $post);
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return redirect()->route('dashboard');
     }
 }
