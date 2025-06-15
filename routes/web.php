@@ -44,7 +44,7 @@ Route::get('/dashboard', function () {
 
 
 Route::get('/profile/edit', function () {
-    return view('profile.edit');
+    return view('profile.edit-profile');
 })->name('profile.edit');
 
 Route::get('/logout-test', function () {
