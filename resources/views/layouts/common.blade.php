@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@yield('title', 'Rescue Dog')</title>
     <link rel="stylesheet" href="{{ url('style.css') }}" />
+    @vite(['resources/css/app.css', 'resources/js/app.js'])  <!--Tailwind CSS対応-->
 </head>
 <body>
     <header id="header" class="p-4 bg-gray-100">
