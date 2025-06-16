@@ -3,7 +3,10 @@
 @section('title', 'TOP/RescueDog')
 
 @section('content')
-    <div id="map"></div>
+    <div class="mt-">
+        1匹でも多くのワンちゃんを救いましょう！ ご投稿お待ちしています。
+    </div>
+    <div id="map" class="h-96 max-w mt-4"></div>
 
     <script>
         const posts = @json($posts);
@@ -19,6 +22,8 @@
     @endif
 
     <a href="{{ route('posts.create') }}">
-        <button>投稿する</button>
+        <button>
+            投稿する
+        </button>
     </a>
 @endsection
