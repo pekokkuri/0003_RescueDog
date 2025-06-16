@@ -1,6 +1,6 @@
 @extends('layouts.common')
 
-@section('title', 'Rescue Dog マップ')
+@section('title', 'TOP/RescueDog')
 
 @section('content')
     <div id="map"></div>
