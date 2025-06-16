@@ -21,8 +21,8 @@
         <script>alert("{{ session('error') }}");</script>
     @endif
 
-    <a href="{{ route('posts.create') }}">
-        <button>
+    <a href="{{ route('posts.create') }}" class="flex justify-center">
+        <button class="mt-4 bg-blue-800 hover:bg-blue-700 text-white rounded px-4 py-2">
             投稿する
         </button>
     </a>
