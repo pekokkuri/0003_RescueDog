@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{{ $title ?? 'Rescue Dog' }}</title>
+    <title>@yield('title', 'Rescue Dog')</title>
     <link rel="stylesheet" href="{{ url('style.css') }}" />
 </head>
 <body>
@@ -29,7 +29,7 @@
     </header>
 
     <main class="p-6">
-        {{ $slot }}
+        @yield('content')
     </main>
 </body>
 </html>
