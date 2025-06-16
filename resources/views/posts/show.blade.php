@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>show</title>
-  </head>
-  <body>
+@extends('layouts.common')
+
+@section('title', '詳細/RescueDog')
+
+@section('content')
 
     <!-- 編集画面へ遷移 -->
     <a href="{{ route('posts.edit-post', ['post' => $post->id]) }}">投稿を編集する</a>
@@ -35,4 +32,4 @@
         form.submit();
         });
   </script>
-</html>
+@endsection
