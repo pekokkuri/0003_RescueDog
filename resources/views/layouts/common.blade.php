@@ -8,7 +8,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])  <!--Tailwind CSS対応-->
 </head>
 <body>
-    <header id="header" class="p-4 bg-gray-100">
+    <header id="header" class="p-4 bg-gray-100 flex items-center justify-between">
         <h1>迷子犬マップ</h1>
         @if (Route::has('login'))
         <nav>
