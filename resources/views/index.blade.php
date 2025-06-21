@@ -11,7 +11,7 @@
     <script>
         const posts = @json($posts);
     </script>
-    <script src="{{ url('/js/map.js') }}"></script>
+    <!-- <script src="{{ url('/js/map.js') }}"></script> -->
     <script
         src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key={{ config('services.google_maps.api_key') }}&callback=initMap"
         async defer
