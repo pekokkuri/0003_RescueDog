@@ -9,7 +9,9 @@
 </head>
 <body>
     <header id="header" class="p-4 bg-gray-100 flex items-center justify-between">
-        <h1>迷子犬マップ</h1>
+        <h1 class="hover:text-gray-500 text-[30px] ml-[30px]">
+            <a href="{{ route('posts.index') }}">RescueDog</a>
+        </h1>
         @if (Route::has('login'))
         <nav>
             @auth
