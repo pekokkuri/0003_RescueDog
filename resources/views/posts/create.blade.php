@@ -6,9 +6,11 @@
     <h1>投稿ページ</h1>
     <form id="post-form" method="POST" action="{{ route('posts.store') }}">
         @csrf
-        <!-- <div>
-            <label> 画像(仮) </label>
-        </div> -->
+        <div>
+            <label>画像
+                <input type="file" name="image" alt="画像"/>
+            </label>
+        </div>
         <div>
             <label>
                 場所
