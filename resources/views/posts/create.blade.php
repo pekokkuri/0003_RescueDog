@@ -4,7 +4,7 @@
 
 @section('content')
     <h1>投稿ページ</h1>
-    <form id="post-form" method="POST" action="{{ route('posts.store') }}">
+    <form id="post-form" method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
         @csrf
         <div>
             <label>画像
