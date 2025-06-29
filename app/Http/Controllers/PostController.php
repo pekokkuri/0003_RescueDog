@@ -46,6 +46,10 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
+        // 投稿画像をstorage/imagesに保存（自動でユニークな名前を割り当てる）
+        $path = $request->file('image')->store('images', 'public');
+
+        $post->image_path = $path;
         $post->address = $request->address;
         $post->lat = $request->lat;
         $post->lng = $request->lng;
