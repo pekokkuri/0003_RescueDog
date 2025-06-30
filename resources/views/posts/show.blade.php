@@ -16,7 +16,7 @@
 
     <!-- 投稿画像を表示 -->
     @if ($post->image_path)
-      <img src="{{ asset('storage/' . $post->image_path) }}" alt="投稿画像">
+      <img src="{{ asset('storage/' . $post->image_path) }}" alt="投稿画像" class="h-[300px] w-[300px]">
     @else
       <p>投稿した画像はありません</p>
     @endif
