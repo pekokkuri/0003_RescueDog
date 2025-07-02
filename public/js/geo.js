@@ -6,9 +6,11 @@ const lngInput = document.getElementById("lng");
 const postForm = document.getElementById("post-form");
 let errorMessage = document.getElementById("error-message");
 
-// エンターキーでの送信をキャンセル
-postForm.addEventListener("submit", (e) => {
-    e.preventDefault();
+// 住所入力中のEnterキー送信を止める
+addressInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+        e.preventDefault(); // 住所欄でEnter押されたときはキャンセル
+    }
 });
 
 function submitForm() {
