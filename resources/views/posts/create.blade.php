@@ -29,7 +29,9 @@
             </label>
         </div> -->
         <div>
-            <button type="button" onclick="submitForm()">投稿</button>
+            <button type="button" onclick="submitForm()" class="bg-blue-800 hover:bg-blue-700 text-white text-center rounded px-4 py-2">
+                投稿
+            </button>
         </div>
     </form>
 
