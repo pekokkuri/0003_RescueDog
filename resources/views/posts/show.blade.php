@@ -24,7 +24,7 @@
     
     <p>{!! nl2br(e($post->address)) !!}</p>
 
-    <p><a href="{{ route('dashboard') }}">マイページへ戻る</a></p>
+    <!-- <p><a href="{{ route('dashboard') }}">マイページへ戻る</a></p> -->
   </body>
 
   <script>
