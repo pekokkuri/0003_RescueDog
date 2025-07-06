@@ -14,6 +14,14 @@
       <button>投稿を削除する</button>
     </form>
 
+    <!-- 投稿画像を表示 -->
+    @if ($post->image_path)
+      <img src="{{ asset('storage/' . $post->image_path) }}" alt="投稿画像" class="h-[300px] w-[300px]">
+    @else
+      <p>投稿した画像はありません</p>
+    @endif
+
+    
     <p>{!! nl2br(e($post->address)) !!}</p>
 
     <p><a href="{{ route('dashboard') }}">マイページへ戻る</a></p>

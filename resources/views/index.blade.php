@@ -3,10 +3,10 @@
 @section('title', 'TOP/RescueDog')
 
 @section('content')
-    <div class="mt-">
+    <div class="mt-4">
         1匹でも多くのワンちゃんを救いましょう！ ご投稿お待ちしています。
     </div>
-    <div id="map" class="h-96 max-w mt-4"></div>
+    <div id="map" class="h-[500px] mt-4"></div>
 
     <script>
         const posts = @json($posts);

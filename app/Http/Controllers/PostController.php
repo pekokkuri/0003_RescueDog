@@ -30,6 +30,17 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $post = new Post();
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+
+            // 投稿画像をstorage/imagesに保存（自動でユニークな名前を割り当てる）
+            $path = $request->file('image')->store('images', 'public');
+            $post->image_path = $path;
+        
+        } else {
+            $post->image_path = null;
+        }
+
         $post->address = $request->address;
         $post->lat = $request->lat;
         $post->lng = $request->lng;

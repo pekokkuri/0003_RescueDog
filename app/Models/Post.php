@@ -10,6 +10,8 @@ class Post extends Model
         'address',
         'lat',
         'lng',
+        'image_path',
+        'user_id',
     ];
 
     public function user()
