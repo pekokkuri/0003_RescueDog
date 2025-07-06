@@ -11,7 +11,6 @@ function initMap() {
     const mapObj = new google.maps.Map(map, opt);
     
     posts.forEach((post) => {
-        console.log(post.lat, post.lng, post.address);
         const latMaker = post.lat;
         const lngMaker = post.lng;
 
