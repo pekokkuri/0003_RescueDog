@@ -3,10 +3,10 @@
 @section('title', '投稿/RescueDog')
 
 @section('content')
-    <fieldset class="border border-gray-400 rounded px-6 pt-4 pb-6 mb-6 relative border-double rounded-lg w-[1000px]">
+    <fieldset class="border border-gray-400 rounded px-6 pt-4 pb-6 mb-6 relative border-double rounded-lg">
         <legend class="text-gray-500 text-sm px-2">投稿フォーム</legend>
     
-        <form id="post-form" method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data">
+        <form id="post-form" method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data" class="max-w-xl">
             @csrf
             <div class="m-4">
                 <label>画像：
@@ -30,18 +30,20 @@
                     <textarea></textarea>
                 </label>
             </div> -->
-            <div class="ml-4 mt-4">
+        </form>
+
+        <div class="flex justify-end gap-4 mt-6">
+            <div>
                 <button type="button" onclick="submitForm()" class="bg-blue-800 hover:bg-blue-700 text-white text-center rounded px-4 py-2">
                     投稿
                 </button>
             </div>
-        </form>
-    
-        <a href="{{ route('posts.index') }}">
-            <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded">
-                戻る
-            </button>
-        </a>
+            <a href="{{ route('posts.index') }}">
+                <button class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-semibold py-2 px-4 rounded">
+                    戻る
+                </button>
+            </a>
+        </div>
     </fieldset>
 
     <script
