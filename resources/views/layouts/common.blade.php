@@ -15,16 +15,16 @@
         @if (Route::has('login'))
         <nav>
             @auth
-                <a href="{{ url('/dashboard') }}" class="mr-4">マイページ</a>
+                <a href="{{ url('/dashboard') }}" class="mr-4 hover:text-gray-500">マイページ</a>
             @else
-                <a href="{{ route('login') }}" class="mr-4">ログイン</a>
-                <a href="{{ route('register') }}">新規登録</a>
+                <a href="{{ route('login') }}" class="mr-4 hover:text-gray-500">ログイン</a>
+                <a href="{{ route('register') }}" class="mr-4 hover:text-gray-500">新規登録</a>
             @endauth
 
             @auth
                 <form method="POST" action="{{ route('logout') }}" class="inline">
                     @csrf
-                    <button type="submit" class="ml-4">ログアウト</button>
+                    <button type="submit" class="mr-4 hover:text-gray-500">ログアウト</button>
                 </form>
             @endauth
         </nav>
