@@ -14,8 +14,10 @@ function initMap() {
         const latMaker = post.lat;
         const lngMaker = post.lng;
         const iconMaker = {
-            url: `/storage/${post.image_path}`,  // 投稿画像のパス
-            scaledSize: new google.maps.Size(40, 40), // 表示するアイコンのサイズ
+            url: post.image_path
+            ? `/storage/${post.image_path}` //投稿画像を表示
+            : `/images/NoImage.png`,        //投稿画像がない場合はNoimageを表示
+            scaledSize: new google.maps.Size(40, 40),
         };
 
         const marker = new google.maps.Marker({
