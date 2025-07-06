@@ -1,4 +1,8 @@
-<x-guest-layout>
+@extends('layouts.common')
+
+@section('title', 'ログイン/RescueDog')
+
+@section('content')
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
@@ -48,4 +52,4 @@
     <div class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
         <a href="{{ route('posts.index') }}">戻る</a>
     </div>
-</x-guest-layout>
+@endsection
