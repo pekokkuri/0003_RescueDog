@@ -20,5 +20,9 @@ function initMap() {
             position: {lat: latMaker, lng:lngMaker},
             title: post.address,
         });
+
+        marker.addListener("click", () => {
+            window.location.href = `/posts/${post.id}`;
+        });
     });
 }
