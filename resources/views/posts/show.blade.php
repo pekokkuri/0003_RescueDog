@@ -19,6 +19,8 @@
       </button>
     </form>
 </div>
+
+<div class="flex m-8">
     <!-- 投稿画像を表示 -->
     @if ($post->image_path)
       <img src="{{ asset('storage/' . $post->image_path) }}" alt="投稿画像" class="h-[300px] w-[300px]">
@@ -27,10 +29,14 @@
     @endif
 
     
-    <p>{!! nl2br(e($post->address)) !!}</p>
+    <div class="ml-6">
+      <label>
+        場所：{!! nl2br(e(Str::contains($post->address, '付近') ? $post->address : $post->address . '付近')) !!}
+      </label>
+    </div>
 
     <!-- <p><a href="{{ route('dashboard') }}">マイページへ戻る</a></p> -->
-  </body>
+</div>
 
   <script>
     'use strict';
