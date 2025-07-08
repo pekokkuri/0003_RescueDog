@@ -9,9 +9,8 @@
         <form id="post-form" method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data" class="max-w-xl">
             @csrf
             <div class="m-4">
-                <label>画像：
-                    <input type="file" name="image" alt="画像"/>
-                </label>
+                <label class="block">画像：</label>
+                <input type="file" name="image" alt="画像" />
             </div>
             <div class="m-4">
                 <label>
