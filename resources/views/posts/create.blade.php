@@ -3,8 +3,8 @@
 @section('title', '投稿/RescueDog')
 
 @section('content')
-    <fieldset class="border border-gray-400 rounded px-6 pt-4 pb-6 mb-6 relative border-double rounded-lg">
-        <legend class="text-gray-500 text-sm px-2">投稿フォーム</legend>
+    <fieldset class="border border-gray-400 rounded mx-auto border-double rounded-lg w-[700px] h-[500px] ">
+        <legend class="text-gray-500 text-sm px-2 text-center">投稿フォーム</legend>
     
         <form id="post-form" method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data" class="max-w-xl">
             @csrf
@@ -31,7 +31,10 @@
             </div> -->
         </form>
 
-        <div class="flex justify-end gap-4 mt-6">
+        <!----------------
+            ボタン
+         ---------------->
+        <div class="flex justify-end gap-4 mt-6 mr-4">
             <div>
                 <button type="button" onclick="submitForm()" class="bg-blue-800 hover:bg-blue-700 text-white text-center rounded px-4 py-2">
                     投稿
