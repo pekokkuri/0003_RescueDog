@@ -5,7 +5,7 @@
 @section('content')
 
 <div class="flex justify-center mt-4">
-  <div class="border border-gray-400 rounded p-4 m-4 w-[1000px] h-dvh">
+  <div class="border border-gray-400 rounded p-4 m-4 w-[1000px] h-auto">
     <!-----------------
       マップ表示
     ------------------->
@@ -23,10 +23,10 @@
     <!-----------------
       ボタン
     ------------------->
-    <div class="flex gap-4 justify-end pt-4">
+    <div class="flex gap-6 justify-end pt-4">
 
       <!-- 編集画面へ遷移 -->
-      <a href="{{ route('posts.edit-post', ['post' => $post->id]) }}" class="bg-blue-800 hover:bg-blue-700 text-white text-center rounded px-4 py-2">
+      <a href="{{ route('posts.edit-post', ['post' => $post->id]) }}" class="bg-gray-500 hover:bg-gray-400 text-white text-center rounded px-4 py-2">
         投稿を編集する
       </a>
 
@@ -34,7 +34,7 @@
       <form method="post" action="{{ route('posts.destroy', $post) }}" id="delete-form">
         @method('DELETE')
         @csrf
-        <button class="bg-red-800 hover:bg-red-700 text-white text-center rounded px-4 py-2">
+        <button class="bg-red-400 hover:bg-red-300 text-white text-center rounded px-4 py-2">
           投稿を削除する
         </button>
       </form>
@@ -58,21 +58,28 @@
           </label>
         </div>
 
-        <!-- <p><a href="{{ route('dashboard') }}">マイページへ戻る</a></p> -->
     </div>
-</div>
-</div>
-  <script>
-    'use strict';
 
-      const form = document.querySelector('#delete-form');
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
+      <!-- 「見つかった」ボタン -->
+      <div class="flex justify-end">
+        <button class="bg-pink-500 hover:bg-pink-400 text-white text-center rounded px-4 py-2">
+            🤍見つかった
+        </button>
+      </div>
+  </div>
+</div>
 
-        if (confirm('本当に削除しますか?') === false) {
-              return;
-        }
-        form.submit();
-        });
-  </script>
+<script>
+  'use strict';
+
+    const form = document.querySelector('#delete-form');
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      if (confirm('本当に削除しますか?') === false) {
+            return;
+      }
+      form.submit();
+      });
+</script>
 @endsection
