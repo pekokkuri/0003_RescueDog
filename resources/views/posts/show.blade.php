@@ -20,24 +20,34 @@
       async defer
     ></script>
 
-    <!-----------------
-      ボタン
-    ------------------->
-    <div class="flex gap-6 justify-end pt-4">
+    <div class="flex justify-between">
+      <div class="pt-4 text-xl ml-[30px]">
+        @if ($post->status === 1)
+          <p class="text-red-500 font-bold">💡ワンちゃんが見つかりました！</p>
+        @else
+          <p class="text-blue-500 font-bold">🔎ワンちゃんを探しています！</p>
+        @endif
+      </div>
 
-      <!-- 編集画面へ遷移 -->
-      <a href="{{ route('posts.edit-post', ['post' => $post->id]) }}" class="bg-gray-500 hover:bg-gray-400 text-white text-center rounded px-4 py-2">
-        投稿を編集する
-      </a>
+      <!-----------------
+        編集・削除ボタン
+      ------------------->
+      <div class="flex gap-6 justify-end pt-4">
 
-      <!-- 削除 -->
-      <form method="post" action="{{ route('posts.destroy', $post) }}" id="delete-form">
-        @method('DELETE')
-        @csrf
-        <button class="bg-red-400 hover:bg-red-300 text-white text-center rounded px-4 py-2">
-          投稿を削除する
-        </button>
-      </form>
+        <!-- 編集画面へ遷移 -->
+        <a href="{{ route('posts.edit-post', ['post' => $post->id]) }}" class="bg-gray-500 hover:bg-gray-400 text-white text-center rounded px-4 py-2">
+          投稿を編集する
+        </a>
+
+        <!-- 削除 -->
+        <form method="post" action="{{ route('posts.destroy', $post) }}" id="delete-form">
+          @method('DELETE')
+          @csrf
+          <button class="bg-red-400 hover:bg-red-300 text-white text-center rounded px-4 py-2">
+            投稿を削除する
+          </button>
+        </form>
+      </div>
     </div>
 
     <!-----------------
@@ -61,11 +71,16 @@
     </div>
 
       <!-- 「見つかった」ボタン -->
-      <div class="flex justify-end">
-        <button class="bg-pink-500 hover:bg-pink-400 text-white text-center rounded px-4 py-2">
-            🤍見つかった
-        </button>
-      </div>
+      @if ($post->status === 0)
+      <form method="POST" action="{{ route('posts.found', $post) }}">
+        @csrf
+        <div class="flex justify-end">
+          <button class="bg-pink-500 hover:bg-pink-400 text-white text-center rounded px-4 py-2">
+              🤍見つかった
+          </button>
+        </div>
+      @endif
+      </form>
   </div>
 </div>
 
