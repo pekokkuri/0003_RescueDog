@@ -81,7 +81,11 @@ class PostController extends Controller
     }
 
     public function found(Post $post)
-    {
+    {   
+        if (!auth()->check()) {
+            return redirect()->route('posts.show', $post)->with('error', 'ログインが必要です。');
+        }
+
         $post->status = 1;
         $post->save();
 
