@@ -51,7 +51,11 @@ class PostController extends Controller
     }
 
     public function edit(Post $post)
-    {
+    {   
+        if (!auth()->check()) {
+            return redirect()->route('posts.show', $post)->with('error', 'ログインが必要です。');
+        }
+
         return view('posts.edit-post')->with(['post' =>  $post]);
     }
 
@@ -67,8 +71,24 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        if (!auth()->check()) {
+            return redirect()->route('posts.show', $post)->with('error', 'ログインが必要です。');
+        }
+
         $post->delete();
 
         return redirect()->route('dashboard');
+    }
+
+    public function found(Post $post)
+    {   
+        if (!auth()->check()) {
+            return redirect()->route('posts.show', $post)->with('error', 'ログインが必要です。');
+        }
+
+        $post->status = 1;
+        $post->save();
+
+        return redirect()->route('posts.show', $post);
     }
 }
