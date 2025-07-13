@@ -6,10 +6,21 @@
 
 <div class="border border-gray-400 rounded p-4 m-4">
 
+  <div id="map" class="h-[250px] mt-4"></div>
+
+  <script>
+    const post = @json($post);
+  </script>
+  <script src="{{ url('/js/show.map.js') }}"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?language=ja&region=JP&key={{ config('services.google_maps.api_key') }}&callback=initMap"
+    async defer
+  ></script>
+
   <!-----------------
     ボタン
   ------------------->
-  <div class="flex gap-4 justify-end">
+  <div class="flex gap-4 justify-end pt-4">
 
     <!-- 編集画面へ遷移 -->
     <a href="{{ route('posts.edit-post', ['post' => $post->id]) }}" class="bg-blue-800 hover:bg-blue-700 text-white text-center rounded px-4 py-2">
