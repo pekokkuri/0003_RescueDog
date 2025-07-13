@@ -35,10 +35,9 @@
       @if ($post->image_path)
         <img src="{{ asset('storage/' . $post->image_path) }}" alt="投稿画像" class="h-[300px] w-[300px]">
       @else
-        <p>投稿した画像はありません</p>
+        <img src="/images/NoImage.png" alt="投稿された画像はありません" class="h-[300px] w-[300px]">
       @endif
 
-      
       <div class="ml-6">
         <label>
           場所：{!! nl2br(e(Str::contains($post->address, '付近') ? $post->address : $post->address . '付近')) !!}
