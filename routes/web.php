@@ -27,6 +27,7 @@ Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.ed
 
 Route::resource('posts', PostController::class)->except(['index','edit']);
 
+Route::post('posts/{post}/found', [PostController::class, 'found'])->name('posts.found');
 
 
 /******************************************
