@@ -71,4 +71,12 @@ class PostController extends Controller
 
         return redirect()->route('dashboard');
     }
+
+    public function found(Post $post)
+    {
+        $post->status = 1;
+        $post->save();
+
+        return redirect()->route('posts.show', $post);
+    }
 }
