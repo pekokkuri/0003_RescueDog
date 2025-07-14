@@ -25,6 +25,7 @@ function initMap() {
             position: {lat: latMaker, lng:lngMaker},
             title: post.address,
             icon: iconMaker,
+            optimized: false,  //投稿画像を丸くするためにfalse
         });
 
         marker.addListener("click", () => {

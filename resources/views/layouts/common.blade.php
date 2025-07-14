@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@yield('title', 'Rescue Dog')</title>
     <!-- <link rel="stylesheet" href="{{ url('style.css') }}" /> -->
+
+    <!------------------------------------ 
+        投稿画像を丸くするための設定
+    -------------------------------------->
+    <style>
+        .gm-style img[src*="/storage/"],
+        .gm-style img[src*="/images/"] {
+            border-radius: 50% !important;
+            object-fit: cover;
+        }
+    </style>
     @vite(['resources/css/app.css', 'resources/js/app.js'])  <!--Tailwind CSS対応-->
 </head>
 <body>
