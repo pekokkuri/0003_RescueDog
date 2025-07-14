@@ -13,16 +13,21 @@
       
       <div class="m-4">
           <label class="block">画像：</label>
-          <input type="file" name="image" alt="画像" />
+          <input type="file" name="image" alt="画像"/>
       </div>
       <div class="m-4">
           <label>
               場所：
-              <input type="text" name="address" id="address" class="w-[500px] h-[30px]"/>
+              <input 
+                type="text"
+                name="address"
+                id="address"
+                class="w-[500px] h-[30px]" 
+                value="{{ old('address', isset($post) ? $post->address : '') }}"/>
           </label>
 
-          <input type="hidden" name="lat" id="lat" />
-          <input type="hidden" name="lng" id="lng" />
+          <input type="hidden" name="lat" id="lat" value="{{ old('lat', isset($post) ? $post->lat : '') }}"/>
+          <input type="hidden" name="lng" id="lng" value="{{ old('lng', isset($post) ? $post->lng : '') }}"/>
 
           <div id="error-message"></div>
       </div>
