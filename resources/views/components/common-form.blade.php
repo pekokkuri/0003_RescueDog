@@ -23,11 +23,8 @@
                 class="w-[500px] h-[30px]" 
                 value="{{ old('address', isset($post) ? $post->address : '') }}"/>
           </label>
-
-          <input type="hidden" name="lat" id="lat" value="{{ old('lat', isset($post) ? $post->lat : '') }}"/>
-          <input type="hidden" name="lng" id="lng" value="{{ old('lng', isset($post) ? $post->lng : '') }}"/>
-          
-              <input type="text" name="address" id="address" class="w-[500px] h-[30px]"/>
+            <input type="hidden" name="lat" id="lat" value="{{ old('lat', isset($post) ? $post->lat : '') }}"/>
+            <input type="hidden" name="lng" id="lng" value="{{ old('lng', isset($post) ? $post->lng : '') }}"/>
           </label>
 
           <div id="error-message"></div>
