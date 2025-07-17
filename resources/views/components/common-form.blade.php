@@ -11,10 +11,8 @@
         @method('PATCH')
       @endif
       
-      <div class="m-4">
-          <label class="block">画像：</label>
-          <input type="file" name="image" alt="画像"/>
-      </div>
+      {{ $slot }}
+
       <div class="m-4">
           <label>
               場所：
