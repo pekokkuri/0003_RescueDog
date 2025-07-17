@@ -45,6 +45,7 @@ class PostController extends Controller
         $post->lat = $request->lat;
         $post->lng = $request->lng;
         $post->user_id = auth()->id();
+        $post->status = 0;
         $post->save();
 
         return redirect()->route('posts.index');
