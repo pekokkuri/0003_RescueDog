@@ -10,6 +10,7 @@
     :formAction="route('posts.update', $post)"
     submitLabel="編集完了"
     :backLink="route('posts.show', $post)"
+    :post="$post"
 >
 
     <div class="m-4">
