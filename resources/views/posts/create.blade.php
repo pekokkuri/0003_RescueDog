@@ -6,16 +6,43 @@
     
 <x-common-form
     formTitle="投稿フォーム"
-    formMethod="POST"
-    :formAction="route('posts.store')"
     submitLabel="投稿する"
     :backLink="route('posts.index')"
 >
 
+<form id="post-form" method="POST" action="{{ route('posts.store') }}" enctype="multipart/form-data" class="max-w-xl">
+    @csrf
     <div class="m-4">
-        <label class="block">画像：</label>
-        <input type="file" name="image" alt="画像" />
+        
+        <div class="m-4">
+            <label class="block">画像：</label>
+            <input type="file" name="image" alt="画像" />
+        </div>
+        <div class="m-4">
+            <label>
+                場所：
+                <input 
+                    type="text"
+                    name="address"
+                    id="address"
+                    class="w-[500px] h-[30px]" />
+            </label>
+                
+            <input type="hidden" name="lat" id="lat" />
+            <input type="hidden" name="lng" id="lng" />
+  
+            <div id="error-message"></div>
+
+        </div>
+        <!-- <div>
+            <label>
+                特徴
+                <textarea></textarea>
+            </label>
+        </div> -->
     </div>
+</form>
+
 </x-common-form>
 
 @endsection
