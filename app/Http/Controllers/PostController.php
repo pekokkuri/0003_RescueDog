@@ -48,7 +48,7 @@ class PostController extends Controller
         $post->status = 0;
         $post->save();
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')->with('flashSuccess', '正常に投稿されました');
     }
 
     public function edit(Post $post)
@@ -81,7 +81,7 @@ class PostController extends Controller
         $post->lng = $request->lng;
         $post->save();
 
-        return redirect()->route('posts.show', $post);
+        return redirect()->route('posts.show', $post)->with('flashSuccess', '投稿が更新されました');
     }
 
     public function destroy(Post $post)
@@ -96,7 +96,7 @@ class PostController extends Controller
 
         $post->delete();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('posts.index')->with('flashSuccess', '投稿が削除されました');
     }
 
     public function found(Post $post)
