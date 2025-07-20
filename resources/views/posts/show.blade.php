@@ -84,4 +84,18 @@
   </div>
 </div>
 
+<!-- ログインユーザーが削除ボタンを押下したとき -->
+<script>
+  'use strict';
+
+  const pushDeleteButton = document.getElementById('delete-form');
+
+  pushDeleteButton.addEventListener('submit', (e) => {
+  e.preventDefault();
+
+  if (confirm('本当に削除しますか?') === false) {
+        return;
+  }});
+</script>
+
 @endsection
