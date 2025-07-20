@@ -84,36 +84,4 @@
   </div>
 </div>
 
-@if(session('error'))
-  <script>
-    alert("{{ session('error') }}");
-  </script>
-@endif
-
-<script>
-  'use strict';
-
-    const form = document.querySelector('#delete-form');
-    let loginFlg;
-    
-    @if (!auth()->check())
-      loginFlg = false;
-    @else
-      loginFlg = true;
-    @endif
-
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      if (!loginFlg) {
-        alert('ログインが必要です。');
-        return; // 送信停止
-      }
-
-      if (confirm('本当に削除しますか?') === false) {
-            return;
-      }
-      form.submit();
-      });
-</script>
 @endsection
