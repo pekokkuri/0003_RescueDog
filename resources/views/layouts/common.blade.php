@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <title>@yield('title', 'Rescue Dog')</title>
     <!-- <link rel="stylesheet" href="{{ url('style.css') }}" /> -->
 
@@ -45,5 +46,10 @@
     <main class="p-6">
         @yield('content')
     </main>
+    
+     <!-- Toastr.js -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    @include('layouts.flash-message')
 </body>
 </html>
