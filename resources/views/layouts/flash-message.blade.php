@@ -2,6 +2,7 @@
   toastr.options = {
       "closeButton": true,
       "progressBar": true,
+      "positionClass": "toast-top-center",
   }
 
   @if (Session::has('flashSuccess'))
