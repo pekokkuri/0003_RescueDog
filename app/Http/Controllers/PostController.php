@@ -21,7 +21,7 @@ class PostController extends Controller
     public function create()
     {
         if (!auth()->check()) {
-            return redirect()->route('posts.index')->with('error', 'ログインが必要です。');
+            return redirect()->route('posts.show', $post)->with('flashError', 'ログインが必要です。');
         }
 
         return view('posts.create');
@@ -54,7 +54,11 @@ class PostController extends Controller
     public function edit(Post $post)
     {   
         if (!auth()->check()) {
-            return redirect()->route('posts.show', $post)->with('error', 'ログインが必要です。');
+            return redirect()->route('posts.show', $post)->with('flashError', 'ログインが必要です。');
+        }
+
+        if (auth()->id() !== $post->user_id) {
+            return redirect()->route('posts.show', $post)->with('flashError', '他のユーザーの投稿は編集できません');
         }
 
         return view('posts.edit-post')->with(['post' =>  $post]);
@@ -83,7 +87,11 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         if (!auth()->check()) {
-            return redirect()->route('posts.show', $post)->with('error', 'ログインが必要です。');
+            return redirect()->route('posts.show', $post)->with('flashError', 'ログインが必要です。');
+        }
+
+        if (auth()->id() !== $post->user_id) {
+            return redirect()->route('posts.show', $post)->with('flashError', '他のユーザーの投稿は削除できません');
         }
 
         $post->delete();
@@ -94,9 +102,13 @@ class PostController extends Controller
     public function found(Post $post)
     {   
         if (!auth()->check()) {
-            return redirect()->route('posts.show', $post)->with('error', 'ログインが必要です。');
+            return redirect()->route('posts.show', $post)->with('flashError', 'ログインが必要です。');
         }
 
+        if (auth()->id() !== $post->user_id) {
+            return redirect()->route('posts.show', $post)->with('flashError', '他のユーザーの投稿は編集できません');
+        }
+        
         $post->status = 1;
         $post->save();
 
