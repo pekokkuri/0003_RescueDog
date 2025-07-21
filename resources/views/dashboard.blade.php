@@ -3,29 +3,26 @@
 @section('title', 'マイぺージ/RescueDog')
 
 @section('content')
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 text-gray-900">
-                    ようこそ、{{ Auth::user()->name }} さん
-                </div>
-            </div>
-        </div>
+
+<div class="p-6 text-gray-900">
+    <div class="text-3xl p-4">
+        現在の投稿一覧
     </div>
 
-    <div class="p-6 text-gray-900">
-        <p>現在の投稿一覧：</p>
-
-        <ul>
-            @forelse ($posts as $post)
-                <li>
-                    <a href="{{ route('posts.show', $post) }}" class="text-skyblue-100 underline hover:text-blue-100">
-                        {{ $post->address }}
-                    </a>
-                </li>
-            @empty
-                <li>まだ投稿していません</li>
-            @endforelse
-        </ul>
-    </div>
+    <ul class="p-4 flex gap-20">
+        @forelse ($posts as $post)
+            <li class="hover:opacity-50">
+                <a href="{{ route('posts.show', $post) }}">
+                    @if ($post->image_path)
+                        <img src="{{ asset('storage/' . $post->image_path) }}" alt="投稿画像" class="w-64 h-64 object-cover rounded-md">
+                    @else
+                        <img src="{{ asset('images/Noimage.png') }}" alt="画像なし" class="w-64 h-64 object-cover rounded-md">
+                    @endif
+                </a>
+            </li>
+        @empty
+            <li>まだ投稿していません</li>
+        @endforelse
+    </ul>
+</div>
 @endsection
