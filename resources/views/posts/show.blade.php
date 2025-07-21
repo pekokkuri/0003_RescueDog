@@ -62,12 +62,21 @@
           <img src="/images/NoImage.png" alt="投稿された画像はありません" class="h-[300px] w-[300px]">
         @endif
 
-        <div class="ml-6">
-          <label>
-            場所：{!! nl2br(e(Str::contains($post->address, '付近') ? $post->address : $post->address . '付近')) !!}
-          </label>
+        <div class="block">
+          <div class="ml-6">
+            <label>
+              <div class="font-bold text-lg underline">場所</div>
+              {!! nl2br(e(Str::contains($post->address, '付近') ? $post->address : $post->address . '付近')) !!}
+            </label>
+          </div>
+          <br>
+          <div class="ml-6">
+            <label>
+              <div class="font-bold text-lg underline">特徴</div>
+              {!! nl2br(e($post->features)) !!}
+            </label>
+          </div>
         </div>
-
     </div>
 
       <!-- 「見つかった」ボタン -->
