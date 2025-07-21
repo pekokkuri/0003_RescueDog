@@ -34,18 +34,6 @@ Route::post('posts/{post}/found', [PostController::class, 'found'])->name('posts
  * ログイン認証用ルート
  * *************************************** */
 
-// Breezeの認証ルートを読み込む
+// ログイン認証用ルートを読み込む
 require __DIR__.'/auth.php';
-
-// マイページ編集用ルートを読み込む
-// require __DIR__.'/profile.php';
-
-Route::get('/profile/edit', function () {
-    return view('profile.edit-profile');
-})->name('profile.edit');
-
-Route::get('/logout-test', function () {
-    \Illuminate\Support\Facades\Auth::logout();
-    return redirect('/');
-});
 
