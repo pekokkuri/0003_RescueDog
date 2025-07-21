@@ -34,12 +34,12 @@
             <div id="error-message"></div>
 
         </div>
-        <!-- <div>
+        <div class="m-4">
             <label>
-                特徴
-                <textarea></textarea>
+                特徴：
+                <textarea class="w-[500px] h-[200px]"></textarea>
             </label>
-        </div> -->
+        </div>
     </div>
 </form>
 
