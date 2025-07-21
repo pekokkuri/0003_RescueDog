@@ -67,14 +67,13 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
-        if ($request->hasFile('image') && $request->file('image')->isValid()) {
-
-            // 投稿画像をstorage/imagesに保存（自動でユニークな名前を割り当てる）
+        // 画像が更新された場合：保存してパスを更新
+        if ($request->hasFile('image')) {
             $path = $request->file('image')->store('images', 'public');
             $post->image_path = $path;
-        
         } else {
-            $post->image_path = null;
+        // 画像が更新されなかった場合：元の画像をそのまま使う
+        $post->image_path = $request->input('current_image');
         }
 
         $post->address = $request->address;
