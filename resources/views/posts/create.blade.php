@@ -37,7 +37,10 @@
         <div class="m-4">
             <label>
                 特徴：
-                <textarea class="w-[500px] h-[200px]"></textarea>
+                <textarea 
+                    id="features"
+                    name="features"
+                    class="w-[500px] h-[200px]"></textarea>
             </label>
         </div>
     </div>
