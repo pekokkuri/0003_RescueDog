@@ -18,6 +18,7 @@
         <div class="m-4">
             <label class="block">画像：</label>
             <input type="file" name="image" alt="画像" />
+            <input type="hidden" name="current_image" value="{{ $post->image_path }}">
         </div>
 
         <div class="m-4">
@@ -42,8 +43,7 @@
                 <textarea
                     id="features"
                     name="features"
-                    class="w-[500px] h-[200px]" >{{ old('features', $post->features) }}
-                </textarea>
+                    class="w-[500px] h-[200px]" >{{ old('features', $post->features) }}</textarea>
             </label>
         </div>
     </div>  
