@@ -16,7 +16,7 @@
                     @if ($post->image_path)
                         <img src="{{ asset('storage/' . $post->image_path) }}" alt="投稿画像" class="w-64 h-64 object-cover rounded-md">
                     @else
-                        <img src="{{ asset('images/Noimage.png') }}" alt="画像なし" class="w-64 h-64 object-cover rounded-md">
+                        <img src="{{ asset('images/NoImage.png') }}" alt="画像なし" class="w-64 h-64 object-cover rounded-md">
                     @endif
                 </a>
             </li>
