@@ -17,6 +17,10 @@
         
         <div class="m-4">
             <label class="block">画像：</label>
+            
+            @if ($post->image_path)
+            <img src="{{ asset('storage/' . $post->image_path) }}" alt="投稿画像" class="h-[100px] w-[100px]">
+            @endif
             <input type="file" name="image" alt="画像" />
             <input type="hidden" name="current_image" value="{{ $post->image_path }}">
         </div>
