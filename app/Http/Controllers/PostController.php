@@ -46,6 +46,7 @@ class PostController extends Controller
         $post->lng = $request->lng;
         $post->user_id = auth()->id();
         $post->status = 0;
+        $post->features = $request->features;
         $post->save();
 
         return redirect()->route('posts.index')->with('flashSuccess', '正常に投稿されました');
@@ -79,6 +80,7 @@ class PostController extends Controller
         $post->address = $request->address;
         $post->lat = $request->lat;
         $post->lng = $request->lng;
+        $post->features = $request->features;
         $post->save();
 
         return redirect()->route('posts.show', $post)->with('flashSuccess', '投稿が更新されました');
