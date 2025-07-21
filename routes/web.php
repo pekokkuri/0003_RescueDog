@@ -40,12 +40,6 @@ require __DIR__.'/auth.php';
 // マイページ編集用ルートを読み込む
 // require __DIR__.'/profile.php';
 
-Route::get('/dashboard', function () {
-    $posts = Post::where('user_id', auth()->id())->get(); // 個人の投稿のみ表示
-    return view('dashboard', ['posts' => $posts]);
-})->middleware(['auth'])->name('dashboard');
-
-
 Route::get('/profile/edit', function () {
     return view('profile.edit-profile');
 })->name('profile.edit');
