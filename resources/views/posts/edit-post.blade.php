@@ -36,6 +36,16 @@
 
             <div id="error-message"></div>
         </div>
+        <div class="m-4">
+            <label>
+                特徴：
+                <textarea
+                    id="features"
+                    name="features"
+                    class="w-[500px] h-[200px]" >{{ old('features', $post->features) }}
+                </textarea>
+            </label>
+        </div>
     </div>  
 </form>  
 
