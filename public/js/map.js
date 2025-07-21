@@ -23,7 +23,7 @@ function initMap() {
         const marker = new google.maps.Marker({
             map: mapObj,
             position: {lat: latMaker, lng:lngMaker},
-            title: post.address,
+            title: "詳細ページに移動",
             icon: iconMaker,
             optimized: false,  //投稿画像を丸くするためにfalse
         });
