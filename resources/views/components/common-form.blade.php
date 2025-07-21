@@ -1,4 +1,4 @@
-<fieldset class="border border-gray-400 rounded mx-auto border-double rounded-lg w-[700px] h-[500px] ">
+<fieldset class="border border-gray-400 rounded mx-auto border-double rounded-lg w-[700px] h-auto pb-6">
   <legend class="text-gray-500 text-sm px-2 text-center">
     {{ $formTitle }}
   </legend>
