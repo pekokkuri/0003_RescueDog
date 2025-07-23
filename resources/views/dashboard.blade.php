@@ -24,5 +24,7 @@
             <li>まだ投稿していません</li>
         @endforelse
     </ul>
+    <a href="{{ route('profile.edit') }}" class="btn btn-primary">プロフィールを編集</a>
+
 </div>
 @endsection
