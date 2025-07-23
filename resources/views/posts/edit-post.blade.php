@@ -17,7 +17,17 @@
         
         <div class="m-4">
             <label class="block">画像：</label>
+            
+            <div class="flex pb-4">
+                @if ($post->image_path)
+                <img src="{{ asset('storage/' . $post->image_path) }}" alt="投稿画像" class="h-[200px] w-[200px] border border-gray-500">
+                @endif
+                <p class="text-sm text-blue-300 flex items-end pl-4 whitespace-nowrap">
+                    ※画像を編集したい場合は、「ファイルを選択」から編集をお願いします
+                </p>
+            </div>
             <input type="file" name="image" alt="画像" />
+            <input type="hidden" name="current_image" value="{{ $post->image_path }}">
         </div>
 
         <div class="m-4">
@@ -42,8 +52,7 @@
                 <textarea
                     id="features"
                     name="features"
-                    class="w-[500px] h-[200px]" >{{ old('features', $post->features) }}
-                </textarea>
+                    class="w-[500px] h-[200px]" >{{ old('features', $post->features) }}</textarea>
             </label>
         </div>
     </div>  
