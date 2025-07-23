@@ -21,7 +21,7 @@ class PostController extends Controller
     public function create()
     {
         if (!auth()->check()) {
-            return redirect()->route('posts.index')->with('error', 'ログインが必要です。');
+            return redirect()->route('posts.index')->with('flashError', 'ログインが必要です');
         }
 
         return view('posts.create');
@@ -45,15 +45,21 @@ class PostController extends Controller
         $post->lat = $request->lat;
         $post->lng = $request->lng;
         $post->user_id = auth()->id();
+        $post->status = 0;
+        $post->features = $request->features;
         $post->save();
 
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')->with('flashSuccess', '正常に投稿されました');
     }
 
     public function edit(Post $post)
     {   
         if (!auth()->check()) {
-            return redirect()->route('posts.show', $post)->with('error', 'ログインが必要です。');
+            return redirect()->route('posts.show', $post)->with('flashError', 'ログインが必要です');
+        }
+
+        if (auth()->id() !== $post->user_id) {
+            return redirect()->route('posts.show', $post)->with('flashError', '他のユーザーの投稿は編集できません');
         }
 
         return view('posts.edit-post')->with(['post' =>  $post]);
@@ -61,31 +67,49 @@ class PostController extends Controller
 
     public function update(Request $request, Post $post)
     {
+        // 画像が更新された場合：保存してパスを更新
+        if ($request->hasFile('image')) {
+            $path = $request->file('image')->store('images', 'public');
+            $post->image_path = $path;
+        } else {
+        // 画像が更新されなかった場合：元の画像をそのまま使う
+        $post->image_path = $request->input('current_image');
+        }
+
         $post->address = $request->address;
         $post->lat = $request->lat;
         $post->lng = $request->lng;
+        $post->features = $request->features;
         $post->save();
 
-        return redirect()->route('posts.show', $post);
+        return redirect()->route('posts.show', $post)->with('flashSuccess', '投稿が更新されました');
     }
 
     public function destroy(Post $post)
     {
         if (!auth()->check()) {
-            return redirect()->route('posts.show', $post)->with('error', 'ログインが必要です。');
+            return redirect()->route('posts.show', $post)->with('flashError', 'ログインが必要です');
+        }
+
+        if (auth()->id() !== $post->user_id) {
+            return redirect()->route('posts.show', $post)->with('flashError', '他のユーザーの投稿は削除できません');
         }
 
         $post->delete();
 
-        return redirect()->route('dashboard');
+        return redirect()->route('posts.index')->with('flashSuccess', '投稿が削除されました');
     }
 
     public function found(Post $post)
     {   
         if (!auth()->check()) {
-            return redirect()->route('posts.show', $post)->with('error', 'ログインが必要です。');
+            return redirect()->route('posts.show', $post)->with('flashError', 'ログインが必要です');
         }
-      
+
+        if (auth()->id() !== $post->user_id) {
+            return redirect()->route('posts.show', $post)->with('flashError', '他のユーザーの投稿は編集できません');
+        }
+        
         $post->status = 1;
         $post->save();
 

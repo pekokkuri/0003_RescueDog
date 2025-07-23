@@ -32,6 +32,7 @@
       <!-----------------
         編集・削除ボタン
       ------------------->
+      @if($post->status === 0)
       <div class="flex gap-6 justify-end pt-4">
 
         <!-- 編集画面へ遷移 -->
@@ -48,6 +49,7 @@
           </button>
         </form>
       </div>
+      @endif
     </div>
 
     <!-----------------
@@ -62,12 +64,21 @@
           <img src="/images/NoImage.png" alt="投稿された画像はありません" class="h-[300px] w-[300px]">
         @endif
 
-        <div class="ml-6">
-          <label>
-            場所：{!! nl2br(e(Str::contains($post->address, '付近') ? $post->address : $post->address . '付近')) !!}
-          </label>
+        <div class="block">
+          <div class="ml-6">
+            <label>
+              <div class="font-bold text-lg underline">場所</div>
+              {!! nl2br(e(Str::contains($post->address, '付近') ? $post->address : $post->address . '付近')) !!}
+            </label>
+          </div>
+          <br>
+          <div class="ml-6">
+            <label>
+              <div class="font-bold text-lg underline">特徴</div>
+              {!! nl2br(e($post->features)) !!}
+            </label>
+          </div>
         </div>
-
     </div>
 
       <!-- 「見つかった」ボタン -->
@@ -84,36 +95,18 @@
   </div>
 </div>
 
-@if(session('error'))
-  <script>
-    alert("{{ session('error') }}");
-  </script>
-@endif
-
+<!-- ログインユーザーが削除ボタンを押下したとき -->
 <script>
   'use strict';
 
-    const form = document.querySelector('#delete-form');
-    let loginFlg;
-    
-    @if (!auth()->check())
-      loginFlg = false;
-    @else
-      loginFlg = true;
-    @endif
+  const pushDeleteButton = document.getElementById('delete-form');
 
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
+  pushDeleteButton.addEventListener('submit', (e) => {
+  e.preventDefault();
 
-      if (!loginFlg) {
-        alert('ログインが必要です。');
-        return; // 送信停止
-      }
-
-      if (confirm('本当に削除しますか?') === false) {
-            return;
-      }
-      form.submit();
-      });
+  if (confirm('本当に削除しますか?') === false) {
+        return;
+  }});
 </script>
+
 @endsection
