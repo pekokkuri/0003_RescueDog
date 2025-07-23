@@ -41,13 +41,36 @@
         </a>
 
         <!-- 削除 -->
-        <form method="post" action="{{ route('posts.destroy', $post) }}" id="delete-form">
-          @method('DELETE')
-          @csrf
-          <button class="bg-red-400 hover:bg-red-300 text-white text-center rounded px-4 py-2">
-            投稿を削除する
-          </button>
-        </form>
+        <button class="bg-red-400 hover:bg-red-300 text-white text-center rounded px-4 py-2"
+            x-data=""
+            x-on:click.prevent="$dispatch('open-modal', 'confirm-post-deletion')"
+        >{{ __('投稿を削除する') }}</button>
+    
+        <x-modal name="confirm-post-deletion" :show="$errors->userDeletion->isNotEmpty()" focusable>
+            <form method="post" action="{{ route('posts.destroy', $post) }}" class="p-6">
+                @csrf
+                @method('delete')
+    
+                <h2 class="text-lg font-medium text-gray-900">
+                    {{ __('本当に削除しますか？') }}
+                </h2>
+    
+                <p class="mt-1 text-sm text-gray-600">
+                    {!! __('この操作を行うと、投稿データが完全に削除され、元に戻すことはできません。') !!}
+                </p>
+    
+                <div class="mt-6 flex justify-end">
+                    <x-secondary-button x-on:click="$dispatch('close')">
+                        {{ __('キャンセル') }}
+                    </x-secondary-button>
+    
+                    <x-danger-button class="ms-3">
+                        {{ __('削除') }}
+                    </x-danger-button>
+                </div>
+            </form>
+          </x-modal>
+        </button>
       </div>
       @endif
     </div>
@@ -94,19 +117,5 @@
       </form>
   </div>
 </div>
-
-<!-- ログインユーザーが削除ボタンを押下したとき -->
-<script>
-  'use strict';
-
-  const pushDeleteButton = document.getElementById('delete-form');
-
-  pushDeleteButton.addEventListener('submit', (e) => {
-  e.preventDefault();
-
-  if (confirm('本当に削除しますか?') === false) {
-        return;
-  }});
-</script>
 
 @endsection
