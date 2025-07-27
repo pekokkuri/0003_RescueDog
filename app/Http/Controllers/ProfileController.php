@@ -34,7 +34,7 @@ class ProfileController extends Controller
 
         $request->user()->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return redirect()->route('dashboard', ['activeTab' => 'profile'])->with('flashSuccess', '正常に保存されました');
     }
 
     /**

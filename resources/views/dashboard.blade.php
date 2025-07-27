@@ -3,7 +3,7 @@
 @section('title', 'マイぺージ/RescueDog')
 
 @section('content')
-<div class="bg-white" x-data="{ activeTab: 'myPosts' }">
+<div class="bg-white" x-data="{ activeTab: '{{ request('activeTab', 'myPosts') }}' }">
     <nav class="flex flex-col sm:flex-row">
         <!-- タブ切り替えボタン -->
         <button
@@ -29,7 +29,7 @@
 
     <!-- 投稿一覧の表示 -->
     <div x-show="activeTab === 'myPosts'" class="p-4">
-        <ul class="flex gap-6 flex-wrap">
+        <ul class="flex gap-6 flex-wrap p-6">
             @forelse ($posts as $post)
                 <li class="hover:opacity-50">
                     <a href="{{ route('posts.show', $post) }}">
