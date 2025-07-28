@@ -105,16 +105,38 @@
     </div>
 
       <!-- 「見つかった」ボタン -->
-      @if ($post->status === 0)
-      <form method="POST" action="{{ route('posts.found', $post) }}">
-        @csrf
-        <div class="flex justify-end">
-          <button class="bg-pink-500 hover:bg-pink-400 text-white text-center rounded px-4 py-2">
-              🤍見つかった
-          </button>
-        </div>
-      @endif
-      </form>
+    @if ($post->status === 0)
+      <div class="flex justify-end">
+        <button class="bg-pink-500 hover:bg-pink-400 text-white text-center rounded px-4 py-2"
+          x-data=""
+          x-on:click.prevent="$dispatch('open-modal', 'confirm-post-found')"
+        >{{ __('🤍見つかった') }}
+        </button>
+        <x-modal name="confirm-post-found" :show="$errors->userDeletion->isNotEmpty()" focusable>
+          <form method="POST" action="{{ route('posts.found', $post) }}" class="p-6">
+              @csrf
+  
+              <h2 class="text-lg font-medium text-gray-900">
+                  {{ __('本当に見つかりましたか？') }}
+              </h2>
+  
+              <p class="mt-1 text-sm text-gray-600">
+                  {!! __('この操作を行うと、投稿データを編集することができなくなります。') !!}
+              </p>
+  
+              <div class="mt-6 flex justify-end">
+                  <x-secondary-button x-on:click="$dispatch('close')">
+                      {{ __('キャンセル') }}
+                  </x-secondary-button>
+  
+                  <x-danger-button class="ms-3">
+                      {{ __('見つかった') }}
+                  </x-danger-button>
+              </div>
+          </form>
+        </x-modal>
+      </div>
+    @endif
   </div>
 </div>
 
