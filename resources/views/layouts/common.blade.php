@@ -38,9 +38,19 @@
                     @csrf
                     <button type="submit" class="mr-4 hover:text-gray-500">ログアウト</button>
                 </form>
+
+                <!-- プロフィール画像を表示 -->
+                @php
+                    $user = Auth::user();
+                @endphp
+                @if ($user->profile_image)
+                    <img src="{{ asset('storage/' . $user->profile_image) }}" class="w-16 h-16 rounded-full object-cover">
+                @else
+                    <img src="/profile_images/default_profile.png" class="w-16 h-16 rounded-full object-cover">
+                @endif
             @endauth
         </nav>
-        @endif
+        @endif  
     </header>
 
     <main class="p-6">
