@@ -26,13 +26,23 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        $user = $request->user();
         $request->user()->fill($request->validated());
+        
+        // 画像が更新された場合：保存してパスを更新
+        if ($request->hasFile('profile_image')) {
+            $profile_path = $request->file('profile_image')->store('profile_images', 'public');
+            $user->profile_image = $profile_path;
+        } else {
+        // 画像が更新されなかった場合：元の画像をそのまま使う
+            $user->profile_image = $request->input('current_profile');
+        }
 
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
 
-        $request->user()->save();
+        $user->save();
 
         return redirect()->route('dashboard', ['activeTab' => 'profile'])->with('flashSuccess', '正常に保存されました');
     }
