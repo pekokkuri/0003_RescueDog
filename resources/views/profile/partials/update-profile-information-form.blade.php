@@ -5,7 +5,7 @@
         </h2>
 
         <p class="mt-1 text-sm text-gray-600">
-            {{ __("ユーザー名とメールアドレスを変更できます") }}
+            {{ __("プロフィール画像・ユーザー名・メールアドレスを変更できます") }}
         </p>
     </header>
 
@@ -13,9 +13,21 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6" enctype="multipart/form-data">
         @csrf
         @method('patch')
+
+        <div>
+            <x-input-label for="profile_image" :value="__('プロフィール画像')" />
+            @if ($user->profile_image)
+            <img src="{{ asset('storage/' . $user->profile_image) }}" alt="プロフィール画像" class="h-[200px] w-[200px] border border-gray-500">
+            @endif
+            <p class="text-sm text-blue-300 flex items-end pl-4 whitespace-nowrap">
+            ※プロフィール画像を編集したい場合は、「ファイルを選択」から編集をお願いします
+            </p>
+        </div>
+            <input type="file" name="profile_image" alt="プロフィール画像" />
+            <input type="hidden" name="current_profile" value="{{ $user->profile_image }}">
 
         <div>
             <x-input-label for="name" :value="__('ユーザー名')" />
