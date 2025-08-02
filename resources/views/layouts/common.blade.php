@@ -25,7 +25,7 @@
             <a href="{{ route('posts.index') }}" class="font-bold text text-5xl">RescueDog</a>
         </h1>
         @if (Route::has('login'))
-        <nav>
+        <nav class="flex items-center space-x-4">
             @auth
                 <a href="{{ url('/dashboard') }}" class="mr-4 hover:text-gray-500">マイページ</a>
             @else
@@ -44,9 +44,9 @@
                     $user = Auth::user();
                 @endphp
                 @if ($user->profile_image)
-                    <img src="{{ asset('storage/' . $user->profile_image) }}" class="w-16 h-16 rounded-full object-cover">
+                    <img src="{{ asset('storage/' . $user->profile_image) }}" class="w-12 h-12 rounded-full object-cover">
                 @else
-                    <img src="/profile_images/default_profile.png" class="w-16 h-16 rounded-full object-cover">
+                    <img src="/profile_images/default_profile.png" class="w-12 h-12 rounded-full object-cover">
                 @endif
             @endauth
         </nav>
