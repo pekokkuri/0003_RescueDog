@@ -137,6 +137,46 @@
         </x-modal>
       </div>
     @endif
+
+    <!--************** 
+      コメント
+    *******************-->
+    
+    <!-- コメントを一覧表示 -->
+    <div class="mt-8">
+    <h3 class="text-lg font-semibold">コメント </h3>
+    @forelse ($post->comments as $comment)
+        <div class="border p-2 my-2">
+          <div class="flex">
+              @php
+                $commentUser = $comment->user;
+              @endphp
+              @if ($commentUser && $commentUser->profile_image)
+                <img src="{{ asset('storage/' . $commentUser->profile_image) }}" class="w-12 h-12 rounded-full object-cover">
+              @else
+                <img src="/profile_images/default_profile.png" class="w-12 h-12 rounded-full object-cover">
+              @endif
+
+              <div class="flex flex-col ml-4">
+                <p class="text-sm text-gray-700">{{ $comment->user->name }}</p>
+                <p class="text-xs text-gray-500">{{ $comment->created_at->format('Y-m-d H:i') }}</p>
+              </div>
+          </div>
+      
+              <p class="pt-4">{{ $comment->body }}</p>
+        </div>
+    @empty
+        <p class="text-gray-500">コメントはまだありません。</p>
+    @endforelse
+  
+    <!-- コメント投稿フォーム -->
+    @auth
+    <form method="POST" action="{{ route('comments.store', ['post' => $post->id]) }}" class="mt-4">
+      @csrf
+      <textarea name="body" rows="3" class="w-full border rounded p-2" placeholder="コメントを書く..." required></textarea>
+      <x-primary-button class="mt-2">送信</x-primary-button>
+    </form>
+    @endauth
   </div>
 </div>
 
