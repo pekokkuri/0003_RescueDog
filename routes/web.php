@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\CommentController;
 use App\Models\Post;
 
 /*
@@ -37,3 +38,10 @@ Route::post('posts/{post}/found', [PostController::class, 'found'])->name('posts
 // ログイン認証用ルートを読み込む
 require __DIR__.'/auth.php';
 
+
+/******************************************
+ * コメント用ルート
+ * *************************************** */
+Route::middleware(['auth'])->group(function () {
+  Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
+});
