@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comment extends Model
+class Reply extends Model
 {
     protected $fillable = [
+        'comment_id',
         'user_id',
-        'post_id',
         'body',
     ];
 
@@ -19,11 +19,6 @@ class Comment extends Model
 
     public function post()
     {
-        return $this->belongsTo(Post::class);
-    }
-
-    public function replies()
-    {
-        return $this->hasMany(Reply::class);
+        return $this->belongsTo(Comment::class);
     }
 }
