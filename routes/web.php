@@ -45,3 +45,11 @@ require __DIR__.'/auth.php';
 Route::middleware(['auth'])->group(function () {
   Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
 });
+
+
+/******************************************
+ * コメント返信用ルート
+ * *************************************** */
+Route::middleware(['auth'])->group(function () {
+  Route::post('posts/{post}/replies', [ReplyController::class, 'store'])->name('replies.store');
+});
