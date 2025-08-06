@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\ReplyController;
 use App\Models\Post;
 
 /*
@@ -51,5 +52,5 @@ Route::middleware(['auth'])->group(function () {
  * コメント返信用ルート
  * *************************************** */
 Route::middleware(['auth'])->group(function () {
-  Route::post('posts/{post}/replies', [ReplyController::class, 'store'])->name('replies.store');
+  Route::post('comments/{comment}/replies', [ReplyController::class, 'store'])->name('replies.store');
 });
