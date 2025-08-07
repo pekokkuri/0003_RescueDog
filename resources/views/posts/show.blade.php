@@ -164,6 +164,51 @@
           </div>
       
               <p class="pt-4">{{ $comment->body }}</p>
+              
+    <!--*****************
+          返信
+    *******************-->
+
+              <!-- 「返信」ボタン -->
+              <div class="text-right mt-2">
+                <button 
+                  class="text-gray-400 hover:text-gray-300 text-sm" 
+                  onclick="toggleReplyForm({{ $comment->id }})"
+                  title="返信する">
+                  ↲
+                </button>
+              </div>
+
+              <!-- 返信フォーム（非表示⇒「返信」ボタンクリックで表示） -->
+              <div id="reply-form-{{ $comment->id }}" class="ml-10 mt-2 hidden">
+                <form action="{{ route('replies.store', ['comment' => $comment->id]) }}" method="POST">
+                  @csrf
+                  <div class="flex">
+                    <textarea
+                      name="body"
+                      placeholder="返信を書く..."
+                      rows="1"
+                      class="flex-grow border-0 border-b border-gray-400 hover:border-blue-500 hover:ring-0 bg-transparent"
+                    ></textarea>
+                    <button type="submit" class="text-blue-400 text-sm hover:text-blue-300 mt-4">送信</button>
+                  </div>  
+                </form>
+              </div>
+
+              <!-- 返信一覧 -->
+              @foreach ($comment->replies as $reply)
+                <div class="ml-10 mt-3 border-l-4 border-gray-300 pl-4">
+                  <div class="flex items-center">
+                    <img src="{{ asset('storage/' . optional($reply->user)->profile_image ?? 'profile_images/default_profile.png') }}"
+                        class="w-8 h-8 rounded-full object-cover">
+                    <div class="ml-2">
+                      <p class="font-bold text-sm">{{ $reply->user->name }}</p>
+                      <p class="text-gray-500 text-xs">{{ $reply->created_at->format('Y-m-d H:i') }}</p>
+                      <p class="text-sm mt-1">{!! nl2br(e($reply->body)) !!}</p>
+                    </div>
+                  </div>
+                </div>
+              @endforeach
         </div>
     @empty
         <p class="text-gray-500">コメントはまだありません。</p>
@@ -180,4 +225,18 @@
   </div>
 </div>
 
+
+<script>
+  function toggleReplyForm(commentId) {
+    const form = document.getElementById(`reply-form-${commentId}`);
+    if (form.classList.contains('hidden')) {
+      form.classList.remove('hidden');
+    } else {
+      form.classList.add('hidden');
+    }
+  }
+</script>
+
+
 @endsection
+
