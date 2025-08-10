@@ -202,7 +202,7 @@
                     <img src="{{ asset('storage/' . optional($reply->user)->profile_image ?? 'profile_images/default_profile.png') }}"
                         class="w-8 h-8 rounded-full object-cover">
                     <div class="ml-2">
-                      <p class="font-bold text-sm">{{ $reply->user->name }}</p>
+                      <p class="text-sm">{{ $reply->user->name }}</p>
                       <p class="text-gray-500 text-xs">{{ $reply->created_at->format('Y-m-d H:i') }}</p>
                       <p class="text-sm mt-1">{!! nl2br(e($reply->body)) !!}</p>
                     </div>
