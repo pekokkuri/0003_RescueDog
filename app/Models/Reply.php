@@ -17,8 +17,13 @@ class Reply extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function post()
+    public function comment()
     {
         return $this->belongsTo(Comment::class);
+    }
+
+    public function notification()
+    {
+        return $this->hasOne(Notification::class);
     }
 }
