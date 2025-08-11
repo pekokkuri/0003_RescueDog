@@ -50,6 +50,6 @@ class User extends Authenticatable
 
     //通知テーブルとのリレーション(User：通知 ＝ 1：多)
     public function notifications() {
-        return $this->hasMany(Notifications::class);
+        return $this->hasMany(Notification::class);
     }
 }
