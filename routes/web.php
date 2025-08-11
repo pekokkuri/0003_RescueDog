@@ -41,16 +41,14 @@ require __DIR__.'/auth.php';
 
 
 /******************************************
- * コメント用ルート
+ * コメント / リプライ / 通知用ルート
  * *************************************** */
 Route::middleware(['auth'])->group(function () {
+
+  /* コメント */
   Route::post('posts/{post}/comments', [CommentController::class, 'store'])->name('comments.store');
-});
 
-
-/******************************************
- * コメント返信用ルート
- * *************************************** */
-Route::middleware(['auth'])->group(function () {
+  /* リプライ */
   Route::post('comments/{comment}/replies', [ReplyController::class, 'store'])->name('replies.store');
+
 });
