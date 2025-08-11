@@ -26,4 +26,9 @@ class Comment extends Model
     {
         return $this->hasMany(Reply::class);
     }
+
+    public function notification()
+    {
+        return $this->hasOne(Notification::class);
+    }
 }
