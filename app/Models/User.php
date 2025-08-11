@@ -43,7 +43,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    //Postテーブルとのリレーション(User：Post ＝ 1：多)
     public function posts() {
         return $this->hasMany(Post::class);
+    }
+
+    //通知テーブルとのリレーション(User：通知 ＝ 1：多)
+    public function notifications() {
+        return $this->hasMany(Notifications::class);
     }
 }
