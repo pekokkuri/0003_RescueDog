@@ -11,6 +11,7 @@ class Notification extends Model
         'type',
         'comment_id',
         'reply_id',
+        'is_read',
         'read_at',
     ];
 
