@@ -9,6 +9,7 @@ class NotificationController extends Controller
 {
   public function is_read(Notification $notification) {
     $notification->is_read = true;
+    $notification->read_at = now();
     $notification->save();
 
     if ($notification->type === 'comment' && $notification->comment) {
