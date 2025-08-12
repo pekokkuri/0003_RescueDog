@@ -63,7 +63,9 @@ class AuthenticatedSessionController extends Controller
         ->latest()
         ->get();
 
+        $unreadCount = auth()->user()->notifications()->where('is_read', false)->count();
+
         // ビューに渡す
-        return view('dashboard', compact('posts', 'notifications'));
+        return view('dashboard', compact('posts', 'notifications', 'unreadCount'));
     }
 }
