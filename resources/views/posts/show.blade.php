@@ -32,7 +32,7 @@
       <!-----------------
         編集・削除ボタン
       ------------------->
-      @if($post->status === 0)
+      @if($post->status === 0 && $post->user_id === auth()->id())
       <div class="flex gap-6 justify-end pt-4">
 
         <!-- 編集画面へ遷移 -->
@@ -105,7 +105,7 @@
     </div>
 
       <!-- 「見つかった」ボタン -->
-    @if ($post->status === 0)
+    @if ($post->status === 0 && $post->user_id === auth()->id())
       <div class="flex justify-end">
         <button class="bg-pink-500 hover:bg-pink-400 text-white text-center rounded px-4 py-2"
           x-data=""
