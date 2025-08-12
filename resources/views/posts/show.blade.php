@@ -23,9 +23,9 @@
     <div class="flex justify-between">
       <div class="pt-4 text-xl ml-[30px]">
         @if ($post->status === 1)
-          <p class="text-red-500 font-bold">💡ワンちゃんが見つかりました！</p>
+          <p class="text-red-500 font-bold">💡 ワンちゃんが見つかりました！</p>
         @else
-          <p class="text-blue-500 font-bold">🔎ワンちゃんを探しています！</p>
+          <p class="text-blue-500 font-bold">🔎 ワンちゃんを探しています...</p>
         @endif
       </div>
 
