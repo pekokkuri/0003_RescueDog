@@ -1,7 +1,7 @@
 <script>
   toastr.options = {
       "closeButton": true,
-      "progressBar": true,
+    //   "progressBar": true,
       "positionClass": "toast-top-center",
   }
 
