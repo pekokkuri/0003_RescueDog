@@ -64,17 +64,17 @@
 
     <!-- 通知一覧の表示 -->
     <div x-show="activeTab === 'notifications'" class="p-4">
-        <ul class="flex gap-6 flex-wrap p-6">
+        <ul class="gap-6 p-6">
             @forelse ($notifications as $notification)
                 <li class="hover:opacity-50">
-                    @if ($notification->type === 'comment' && $notification->comment)
-                        <a href="{{ route('posts.show', $notification->comment->post_id )}}">{{ $notification->comment->user->name }} さんからコメントがきています</a>
-                    @elseif ($notification->type === 'reply' && $notification->reply)
-                        <a href="{{ route('posts.show', $notification->reply->comment->post_id )}}">{{ $notification->reply->user->name }} さんから返信がきています</a>
+                    @if ($notification->type === 'comment' && $notification->comment && !$notification->is_read)
+                        <a href="{{ route('notifications.read', $notification->id )}}">📍 {{ $notification->comment->user->name }} さんからコメントがきています</a>
+                    @elseif ($notification->type === 'reply' && $notification->reply && !$notification->is_read)
+                        <a href="{{ route('notifications.read', $notification->id )}}">📍 {{ $notification->reply->user->name }} さんから返信がきています</a>
                     @endif
                 </li>
             @empty
-                <li>新着情報はありません</li>
+                <li>新着通知はありません</li>
             @endforelse
         </ul>
     </div>
