@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ReplyController;
+use App\Http\Controllers\NotificationController;
 use App\Models\Post;
 
 /*
@@ -50,5 +51,8 @@ Route::middleware(['auth'])->group(function () {
 
   /* リプライ */
   Route::post('comments/{comment}/replies', [ReplyController::class, 'reply_store'])->name('replies.store');
+
+
+  Route::get('/notifications/{notification}/read', [NotificationController::class, 'is_read'])->name('notifications.read');
 
 });
