@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Notification;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -52,7 +53,16 @@ class AuthenticatedSessionController extends Controller
     // ログイン成功後、マイページを表示
     public function dashboard(): View
     {
-        $posts = Post::where('user_id', auth()->id())->get(); //投稿一覧を表示
-        return view('dashboard', ['posts' => $posts]);
+        //投稿一覧を表示
+        $posts = Post::where('user_id', auth()->id())->get(); 
+
+        // ログインユーザーの通知を取得（未読も既読も含む）
+        $notifications = auth()->user()->notifications()
+        ->with(['comment.user', 'reply.user']) // 関連リレーションの eager loading
+        ->latest()
+        ->get();
+
+        // ビューに渡す
+        return view('dashboard', compact('posts', 'notifications'));
     }
 }
