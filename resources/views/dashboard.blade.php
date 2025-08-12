@@ -29,12 +29,17 @@
 
         <button
             :class="activeTab === 'notifications' 
-            ? 'border-b-2 border-blue-600 text-blue-600 font-semibold' 
-            : 'text-gray-500 hover:text-blue-600'"
+            ? 'border-b-2 border-blue-600 text-blue-600 font-semibold relative' 
+            : 'text-gray-500 hover:text-blue-600 relative'"
             class="py-2 px-4 transition duration-300"
             @click="activeTab = 'notifications'"
         >
             通知
+            @if ($unreadCount > 0)
+                <span class="absolute top-0 right-0 bg-red-500 text-white rounded-full text-xs w-5 h-5 flex items-center justify-center">
+                    {{ $unreadCount }}
+                </span>
+            @endif
         </button>
     </nav>
 
