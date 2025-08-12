@@ -47,7 +47,8 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/');
+        return redirect('/')
+        ->with('flashSuccess', "ログアウトしました");;
     }
 
     // ログイン成功後、マイページを表示
