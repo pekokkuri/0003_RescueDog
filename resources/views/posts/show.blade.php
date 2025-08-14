@@ -187,7 +187,7 @@
                   </button>
                 </div>
 
-                <!-- 返信フォーム（非表示⇒「返信」ボタンクリックで表示） -->
+                <!-- 返信フォーム（非表示⇒「↲」ボタンクリックで表示） -->
                 <div id="reply-form-{{ $comment->id }}" class="ml-10 mt-2 hidden">
                   <form action="{{ route('replies.store', ['comment' => $comment->id]) }}" method="POST">
                     @csrf
