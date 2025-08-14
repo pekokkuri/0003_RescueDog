@@ -159,11 +159,8 @@
         @forelse ($post->comments as $comment)
           <div class="border p-2 my-2">
             <div class="flex">
-                @php
-                  $commentUser = $comment->user;
-                @endphp
-                @if ($commentUser && $commentUser->profile_image)
-                  <img src="{{ asset('storage/' . $commentUser->profile_image) }}" class="w-12 h-12 rounded-full object-cover">
+                @if ($comment->user && $comment->user->profile_image)
+                  <img src="{{ asset('storage/' . $comment->user->profile_image) }}" class="w-12 h-12 rounded-full object-cover">
                 @else
                   <img src="/profile_images/default_profile.png" class="w-12 h-12 rounded-full object-cover">
                 @endif
