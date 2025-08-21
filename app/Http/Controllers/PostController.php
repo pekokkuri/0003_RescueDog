@@ -8,10 +8,15 @@ use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
+    public function about()
+    {
+        return view('posts.about');
+    }
+
     public function index()
     {
         $posts = Post::all();
-        return view('index')->with(['posts' => $posts]);
+        return view('posts.index')->with(['posts' => $posts]);
     }
 
     public function show(Post $post) {

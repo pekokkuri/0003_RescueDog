@@ -23,12 +23,12 @@ use App\Models\Post;
  * 投稿用ルート
  * *************************************** */
 
-Route::get('/', [PostController::class, 'index'])->name('posts.index');
+// Route::get('/', [PostController::class, 'index'])->name('posts.index');
 // Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');
 
 Route::get('posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit-post');
 
-Route::resource('posts', PostController::class)->except(['index','edit']);
+Route::resource('posts', PostController::class)->except(['edit']);
 
 Route::post('posts/{post}/found', [PostController::class, 'found'])->name('posts.found');
 
@@ -56,3 +56,9 @@ Route::middleware(['auth'])->group(function () {
   Route::get('/notifications/{notification}/read', [NotificationController::class, 'is_read'])->name('notifications.read');
 
 });
+
+
+/******************************************
+ * Aboutページ用ルート
+ * *************************************** */
+Route::get('/', [PostController::class, 'about'])->name('posts.about');

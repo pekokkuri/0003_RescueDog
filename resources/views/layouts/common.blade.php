@@ -26,6 +26,7 @@
         </h1>
         @if (Route::has('login'))
         <nav class="flex items-center space-x-4">
+            <a href="{{ route('posts.about') }}" class="mr-4 hover:text-gray-500">RescueDogとは</a> 
             @auth
                 <a href="{{ url('/dashboard') }}" class="mr-4 hover:text-gray-500">マイページ</a>
             @else
