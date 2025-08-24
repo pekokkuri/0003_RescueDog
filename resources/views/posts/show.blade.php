@@ -144,7 +144,7 @@
     
     <!-- コメントはトグルで表示・非表示を管理 -->  
     <div class="mt-8">
-      <h3 class="text-lg font-semibold">コメント </h3>  
+      <h3 class="text-lg font-semibold"><コメント></h3>  
       @if ($post->comments->count() > 0)
         <button 
           class="text-blue-400 hover:text-blue-300 text-lg m-4 font-bold underline" 
@@ -153,7 +153,7 @@
         >
         コメントが{{ $post->comments->count() }}件あります...
         </button>
-
+      @endif
       <!-- コメントを一覧表示 -->
       <div id="comment-list" class="hidden">
         @forelse ($post->comments as $comment)
@@ -218,10 +218,9 @@
                   </div>
                 @endforeach
           </div>
-        @endforeach
-      @else
-        <p class="text-gray-500">コメントはまだありません。</p>
-      @endif
+        @empty
+          <p class="text-gray-500">コメントはまだありません。</p>
+        @endforelse
       </div>
     </div>
     <!-- コメント投稿フォーム -->
