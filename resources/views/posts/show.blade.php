@@ -155,7 +155,7 @@
         </button>
       @endif
       <!-- コメントを一覧表示 -->
-      <div id="comment-list" class="hidden">
+      <div id="comment-list" class="{{ $post->comments->count() > 0 ? 'hidden' : '' }}">
         @forelse ($post->comments as $comment)
           <div class="border p-2 my-2">
             <div class="flex">
