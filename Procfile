@@ -1,1 +1,0 @@
-web: php-fpm -F -R -O -y /etc/php/8.4/fpm/php-fpm.conf
