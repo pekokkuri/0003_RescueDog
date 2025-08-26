@@ -1,1 +1,1 @@
-web: vendor/bin/heroku-php-apache2 public/
+web: bash -c "php artisan config:cache && php artisan route:cache && php artisan view:cache && php-fpm -F"
