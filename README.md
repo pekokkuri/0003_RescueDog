@@ -1,15 +1,40 @@
-## ✅概要
+## 概要
 迷子犬情報を共有するWebアプリ「**RescueDog**」です。  
 ユーザーは迷子犬の情報を投稿・閲覧でき、コメントや返信も可能です。  
 地図で迷子犬の位置情報を確認できます。
 
-## ✅使用技術
+## イメージ図(一部)
+<table>
+  <tr>
+    <td align="center">
+      <img width="350" alt="TOP" src="https://github.com/user-attachments/assets/641b6f51-049a-466d-a03c-bb641a0d1312" /><br>
+      Topページ
+    </td>
+    <td align="center">
+      <img width="350" alt="SHOW" src="https://github.com/user-attachments/assets/dca3d27e-5e55-47e9-95f8-f01c592525bc" /><br>
+      投稿詳細ページ
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img width="350" alt="INDEX" src="https://github.com/user-attachments/assets/77159cd1-faf0-46d2-b1bc-973c972838ad" /><br>
+      投稿一覧ページ
+    </td>
+    <td align="center">
+      <img width="350" alt="MYPROFILE" src="https://github.com/user-attachments/assets/bbb506c8-532a-47e2-bd03-34d3ac6ae1e3" /><br>
+      マイプロフィールページ
+    </td>
+  </tr>
+</table>
+
+
+## 使用技術
 - バックエンド: PHP 8.4 / Laravel 11  
-- フロントエンド: JavaScript, Alpine.js, Tailwind CSS  
+- フロントエンド: JavaScript, Alpine.js, Tailwind CSS
 - データベース: MySQL  
 - 地図API: Google Maps API
 
-## ✅主な機能
+## 主な機能
 - 投稿機能（作成・編集・削除）
 - コメント機能・返信機能
 - 通知機能
@@ -18,13 +43,10 @@
 - プロフィール編集機能
 - マイページ機能
 
-## ✅学んだこと・工夫
-- コメント機能のトグル表示をAlpine.jsで実装
-- 投稿一覧の地図表示やジオコーディングの実装経験
-- Laravelの認証・CRUD処理の理解
+## 学んだこと・工夫
+-
 
-## ✅今後の改善予定
+## 今後の改善予定
 - デプロイ完了
 - コメントの通知機能をリアルタイム化
 - UI改善
-  
